@@ -1,0 +1,28 @@
+[03-Jan-2026 14:46:40 UTC] PHP Warning:  include(./Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:46:40 UTC] PHP Warning:  include(./Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:46:40 UTC] PHP Warning:  include(): Failed opening './Config/connect.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:46:40 UTC] PHP Notice:  Undefined variable: conn in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:46:40 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:46:40 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 10
+[03-Jan-2026 14:47:00 UTC] PHP Warning:  include(./Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:47:00 UTC] PHP Warning:  include(./Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:47:00 UTC] PHP Warning:  include(): Failed opening './Config/connect.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:47:00 UTC] PHP Notice:  Undefined variable: conn in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:47:00 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:47:00 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 10
+[03-Jan-2026 14:49:09 UTC] PHP Warning:  include(../Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:09 UTC] PHP Warning:  include(../Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:09 UTC] PHP Warning:  include(): Failed opening '../Config/connect.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:09 UTC] PHP Notice:  Undefined variable: conn in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:49:09 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:49:09 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 10
+[03-Jan-2026 14:49:18 UTC] PHP Warning:  include(../Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:18 UTC] PHP Warning:  include(../Config/connect.php): failed to open stream: No such file or directory in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:18 UTC] PHP Warning:  include(): Failed opening '../Config/connect.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 2
+[03-Jan-2026 14:49:18 UTC] PHP Notice:  Undefined variable: conn in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:49:18 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 9
+[03-Jan-2026 14:49:18 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 10
+[03-Jan-2026 14:52:28 UTC] PHP Notice:  Undefined index: anhhung_story in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 177
+[03-Jan-2026 14:52:28 UTC] PHP Notice:  Undefined index: anhhung_achievement in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 182
+[03-Jan-2026 14:52:48 UTC] PHP Notice:  Undefined index: anhhung_story in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 177
+[03-Jan-2026 14:52:48 UTC] PHP Notice:  Undefined index: anhhung_achievement in /home/u21s4j7n6y8o/public_html/ModelViews/Component_khac/Me_VNAH_chitiet.php on line 182

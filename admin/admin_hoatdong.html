@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"> <!-- Thiết lập mã hóa ký tự -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive cho di động -->
+  <title>Admin khoa B</title>
+
+  <!-- Preconnect & Import Font Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" 
+    rel="stylesheet"
+  >
+  <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Kết nối file CSS chính -->
+  <link rel="stylesheet" href="./admin_css/admin.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="admin_logo">
+            <a href="./admin.html">
+                <img src="./BIT-logo-white.png" alt="Logo" class="BIT-logo">
+            </a>        
+        </div>
+
+        <ul>
+            <li><a href="./admin_hoatdong.html">Quản lý hoạt động</a></li>
+            <li><a href="./admin_hoatdong.html">Quản lý quỹ</a></li>
+            <li><a href="./admin_hoatdong.html">Thông tin sinh viên</a></li>
+            <li><a href="./admin_hoatdong.html">Thông tin mẹ VNAH</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="activity-management">
+        <div class="header">
+          <h2>QUẢN LÝ <span>HOẠT ĐỘNG</span></h2>
+          <div class="actions">
+            <input type="text" placeholder="Tìm kiếm ..." />
+            <div class="button-group">
+            <button class="filter-button">
+              <i class="fa-solid fa-filter"></i> Sắp xếp
+            </button>
+            <button class="add-button">Thêm mới</button>
+          </div>
+          </div>
+        </div>
+      
+        <table class="custom-table">
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Thuộc tính 1</th>
+              <th>Thuộc tính 2</th>
+              <th>Thuộc tính 3</th>
+              <th>Thuộc tính 4</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>ABCXYZ</td>
+              <td>EYFG</td>
+              <td>EEEE</td>
+              <td class="action-buttons">
+                <button class="edit-btn"><i class="fas fa-pen-to-square"></i></button>
+                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>ABCXYZ</td>
+              <td>EYFG</td>
+              <td>EEEE</td>
+              <td class="action-buttons">
+                <button class="edit-btn"><i class="fas fa-pen-to-square"></i></button>
+                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>01</td>
+              <td>ABCXYZ</td>
+              <td>EYFG</td>
+              <td>EEEE</td>
+              <td class="action-buttons">
+                <button class="edit-btn"><i class="fas fa-pen-to-square"></i></button>
+                <button class="delete-btn" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+      
+      </div>
+      
+    </div>
+
+    <!-- Kết nối file JavaScript -->
+  <script src="./admin_js/admin.js"></script>
+</body>
+</html>

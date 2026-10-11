@@ -1,0 +1,1711 @@
+/* General Enhancements */
+:root {
+    --primary-color: #D20920;
+    --secondary-color: #0177BE;
+    --accent-color: #9D9D18;
+    --light-color: #F1EADE;
+    --dark-color: #151632;
+    --web-campaign-1: #D20920;
+    --web-campaign-2: #F1EADE;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Animated Gradient Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(210, 9, 32, 0.03), rgba(1, 119, 190, 0.03), rgba(157, 157, 24, 0.03));
+    background-size: 400% 400%;
+    z-index: -2;
+    animation: gradientBG 15s ease infinite;
+  }
+  
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Hero Section Enhancements */
+  .Quy_hero_section {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding: 3.75rem 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Quy_hero_section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.85) contrast(1.1);
+    transition: all 1.5s ease;
+  }
+  
+  .Quy_hero_section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+      rgba(0, 0, 0, 0.5) 0%, 
+      rgba(0, 0, 0, 0.3) 50%, 
+      rgba(0, 0, 0, 0.6) 100%);
+    z-index: -1;
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+    font-weight: 900;
+    margin-bottom: 4rem;
+    line-height: 1.3;
+    position: absolute;
+    top: 7.5rem;
+    z-index: 1;
+    text-shadow: 
+      0.05rem 0.05rem 0 var(--light-color),
+      0.1rem 0.1rem 0 rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1rem;
+    transform: perspective(500px) rotateX(0deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: heroTextIntro 1.2s ease-out;
+  }
+  
+  @keyframes heroTextIntro {
+    0% {
+      opacity: 0;
+      transform: perspective(500px) rotateX(30deg) translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: perspective(500px) rotateX(0deg) translateY(0);
+    }
+  }
+  
+  .Quy_hero_section h1:hover {
+    transform: perspective(500px) rotateX(5deg) scale(1.03);
+  }
+  
+  .Quy_hero_section_total_amount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, 
+      rgba(1, 119, 190, 0.9) 0%, 
+      rgba(0, 87, 145, 0.85) 100%);
+    padding: 1.25rem 1.25rem 1.25rem 0;
+    margin-top: 6.25rem;
+    border-radius: 3.75rem;
+    width: 67.9375rem;
+    height: 16.625rem;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
+    top: 25rem;
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(1, 119, 190, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: counterAppear 1s ease-out 0.5s both;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @keyframes counterAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .Quy_hero_section_total_amount:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(1, 119, 190, 0.4);
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 2.375rem;
+    margin-bottom: 0.625rem;
+    color: var(--web-campaign-2);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 7rem;
+    font-weight: bold;
+    color: #F1EADE;
+    text-shadow: 
+      0 2px 5px rgba(0, 0, 0, 0.3),
+      0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #F1EADE, #ffffff, #F1EADE);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    animation: numberPulse 3s infinite;
+  }
+  
+  @keyframes numberPulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+  
+  .Quy_hero_section_sub_text {
+    color: white;
+    font-size: 1.375rem;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: 0.9375rem;
+    animation: bounce 2s infinite;
+    text-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 1.25rem;
+    z-index: 1;
+    padding: 0.5rem 2rem;
+    border-radius: 3rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    letter-spacing: 0.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .Quy_hero_section_sub_text:hover {
+    background: rgba(210, 9, 32, 0.5);
+    transform: translateY(-5px);
+  }
+  
+  /* QR Code Section Enhancements */
+  .Quy_QR_section {
+    padding: 2.5rem 0;
+  }
+  
+  .Quy_QR_section_div {
+    background: linear-gradient(135deg, #D7283C 0%, #A71B27 100%);
+    border-radius: 5.625rem;
+    padding: 1.875rem;
+    height: 37.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.875rem;
+    margin-right: 1.875rem;
+    box-shadow: 
+      0 20px 40px rgba(215, 40, 60, 0.25),
+      0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .Quy_QR_section_div:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+      0 25px 50px rgba(215, 40, 60, 0.3),
+      0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .Quy_QR_section_div::before,
+  .Quy_QR_section_div::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+  }
+  
+  .Quy_QR_section_div::before {
+    width: 25rem;
+    height: 25rem;
+    top: -12rem;
+    left: -10rem;
+  }
+  
+  .Quy_QR_section_div::after {
+    width: 20rem;
+    height: 20rem;
+    bottom: -10rem;
+    right: -5rem;
+  }
+  
+  .Quy_QR_section_QR {
+    width: 30.375rem;
+    height: 30.375rem;
+    margin-left: 3.125rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: white;
+    padding: 1rem;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.2),
+      0 0 0 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .Quy_QR_section_QR:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.3),
+      0 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+  
+  .Quy_QR_section_QR img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: all 0.5s ease;
+  }
+  
+  .Quy_QR_section_QR:hover img {
+    transform: scale(0.98);
+  }
+  
+  .Quy_QR_section_QR_info {
+    margin-left: 6.25rem;
+    color: white;
+    max-width: 43.75rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 3.125rem;
+    font-weight: 900;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    background: linear-gradient(to right, #ffffff, #f1f1f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+  }
+  
+  .Quy_QR_section_QR_info h3::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 60%;
+    left: 0;
+    bottom: -10px;
+    background: linear-gradient(to right, white, transparent);
+    border-radius: 2px;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 2.5rem;
+    margin-bottom: 0.625rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.3s ease;
+    padding-left: 1rem;
+  }
+  
+  .Quy_QR_section_QR_info p:hover {
+    transform: translateX(10px);
+  }
+  
+  .Quy_QR_section_QR_info p::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+  }
+  
+  /* Stats Section Enhancements */
+  .Stats_section {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 3rem 2rem;
+    background: linear-gradient(to right, #ffffff, #f8f8f8, #ffffff);
+    text-align: center;
+    margin: 3rem 0;
+    border-radius: 3rem;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.05),
+      0 0 0 1px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .Stats_section::before,
+  .Stats_section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(157, 157, 24, 0.05);
+  }
+  
+  .Stats_section::before {
+    width: 30rem;
+    height: 30rem;
+    top: -20rem;
+    left: -10rem;
+  }
+  
+  .Stats_section::after {
+    width: 25rem;
+    height: 25rem;
+    bottom: -15rem;
+    right: -8rem;
+  }
+  
+  .Stats_item {
+    flex: 1;
+    padding: 2rem;
+    max-width: 20rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .Stats_item:hover {
+    transform: translateY(-15px);
+  }
+  
+  .Stats_item::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, rgba(157, 157, 24, 0.5), transparent);
+    bottom: 0;
+    left: 10%;
+    border-radius: 3px;
+  }
+  
+  .Stats_item h2 {
+    color: #9D9D18;
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 5px rgba(157, 157, 24, 0.2);
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .Stats_item:hover h2 {
+    transform: scale(1.1);
+  }
+  
+  .Stats_item h2::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background: #9D9D18;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  
+  .Stats_item:hover h2::after {
+    width: 80px;
+  }
+  
+  .Stats_item p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(157, 157, 24, 0.1);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .Stats_item:hover p {
+    background: rgba(157, 157, 24, 0.2);
+    transform: scale(1.05);
+  }
+  
+  /* Thống kê section */
+  .Thong_ke_section_div {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #FFD6E0, #FFC5D1);
+    border-radius: 3.125rem;
+    box-shadow: 
+      0 15px 35px rgba(210, 9, 32, 0.15),
+      0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .Thong_ke_section_div::before,
+  .Thong_ke_section_div::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .Thong_ke_section_div::before {
+    width: 25rem;
+    height: 25rem;
+    top: -15rem;
+    left: -10rem;
+  }
+  
+  .Thong_ke_section_div::after {
+    width: 20rem;
+    height: 20rem;
+    bottom: -10rem;
+    right: -5rem;
+  }
+  
+  .Thong_ke_section_title {
+    width: 54.375rem;
+    background: linear-gradient(to right, #D20920 0%, #BF3444);
+    color: var(--web-campaign-2);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    padding: 1.625rem;
+    border-radius: 6.25rem 0 6.25rem 0;
+    margin-bottom: 3rem;
+    text-align: center;
+    box-shadow: 
+      0 10px 20px rgba(210, 9, 32, 0.2),
+      0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: translateY(-40px);
+    z-index: 2;
+  }
+  
+  .Thong_ke_section_title::before,
+  .Thong_ke_section_title::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+  }
+  
+  .Thong_ke_section_title::before {
+    top: 20px;
+    left: 30px;
+  }
+  
+  .Thong_ke_section_title::after {
+    bottom: 20px;
+    right: 30px;
+  }
+  
+  .momo-embed-wrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+      0 15px 30px rgba(0, 0, 0, 0.15),
+      0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s ease;
+    transform: translateY(0);
+  }
+  
+  .momo-embed-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.2),
+      0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+ /* Slider Container - Cải tiến */
+ /* Quỹ Info Section */
+.Quy_info_section {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--web-campaign-1);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .Quy_info_section::before,
+  .Quy_info_section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .Quy_info_section::before {
+    width: 40rem;
+    height: 40rem;
+    top: -25rem;
+    left: -15rem;
+  }
+  
+  .Quy_info_section::after {
+    width: 35rem;
+    height: 35rem;
+    bottom: -20rem;
+    right: -15rem;
+  }
+  
+  .Quy_info_section_title {
+    width: 54.375rem;
+    max-width: 90%;
+    background-color: #FBF3B7;
+    color: var(--web-campaign-1);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    padding: 1.625rem;
+    border-radius: 6.25rem 0 6.25rem 0;
+    margin-bottom: 3rem;
+    text-align: center;
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.15),
+      0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+    transform: rotate(-2deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .Quy_info_section_title:hover {
+    transform: rotate(0deg) scale(1.03);
+  }
+.Quy_info_slider {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 3.125rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    padding: 2rem 0;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Slides Container */
+  .Quy_info_slides {
+    position: relative;
+    width: 100%;
+    transition: height 0.5s ease;
+  }
+  
+  /* Hiệu ứng mượt mà cho từng slide */
+  .Quy_info_section_content {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--web-campaign-1) 0%, rgba(191, 52, 68, 0.9) 100%);
+    min-height: 30rem;
+    height: auto;
+    margin: 0 auto;
+    padding: 2.5rem 5%;
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    gap: 2.5rem;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+      0 0.75rem 1.5rem rgba(0, 0, 0, 0.2),
+      0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Hiệu ứng nền trang trí */
+  .Quy_info_section_content::before,
+  .Quy_info_section_content::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .Quy_info_section_content::before {
+    width: 20rem;
+    height: 20rem;
+    top: -10rem;
+    left: -5rem;
+  }
+  
+  .Quy_info_section_content::after {
+    width: 15rem;
+    height: 15rem;
+    bottom: -7rem;
+    right: -5rem;
+  }
+  
+  /* Hiệu ứng hiển thị slide đang active */
+  .Quy_info_section_content.active {
+    display: flex;
+    animation: slideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  @keyframes slideIn {
+    0% { 
+      opacity: 0; 
+      transform: translateY(20px) scale(0.95); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
+  }
+  
+  /* Phần nội dung tiêu đề */
+  .Quy_info_section_content_title {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Tiêu đề slide */
+  .Quy_info_section_content_title h3 {
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: var(--web-campaign-2);
+    text-shadow:
+      -0.0625rem -0.0625rem 0 #c4001a,
+      0.0625rem -0.0625rem 0 #c4001a,
+      -0.0625rem 0.0625rem 0 #c4001a,
+      0.0625rem 0.0625rem 0 #c4001a;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+    align-self: center;
+    text-align: center;
+    width: 100%;
+    letter-spacing: 0.05rem;
+    transform: perspective(500px) rotateX(0);
+    transition: transform 0.5s ease, text-shadow 0.5s ease;
+  }
+  
+  /* Hiệu ứng hover cho tiêu đề */
+  .Quy_info_section_content_title h3:hover {
+    transform: perspective(500px) rotateX(5deg) scale(1.03);
+    text-shadow:
+      -0.125rem -0.125rem 0 #c4001a,
+      0.125rem -0.125rem 0 #c4001a,
+      -0.125rem 0.125rem 0 #c4001a,
+      0.125rem 0.125rem 0 #c4001a;
+  }
+  
+  /* Đường gạch trang trí dưới tiêu đề */
+  .Quy_info_section_content_title h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 0.25rem;
+    background: linear-gradient(90deg, transparent, var(--web-campaign-2), transparent);
+    border-radius: 1rem;
+    transition: width 0.3s ease;
+  }
+  
+  /* Hiệu ứng hover cho đường gạch dưới */
+  .Quy_info_section_content_title h3:hover::after {
+    width: 80%;
+  }
+  
+  /* Đoạn văn nội dung */
+  .Quy_info_section_content_title p {
+    color: var(--web-campaign-2);
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    text-align: justify;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-left: 0.25rem solid var(--web-campaign-2);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    transform: translateX(0);
+  }
+  
+  /* Hiệu ứng hover cho đoạn văn */
+  .Quy_info_section_content_title p:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Phần hình ảnh */
+  .Quy_info_section_image {
+    flex: 1;
+    max-width: 50%;
+    border-radius: 1.5rem;
+    height: 25rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+      0 0.5rem 1rem rgba(0, 0, 0, 0.2),
+      0 0 0 0.5rem rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform: perspective(800px) rotateY(-5deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+  }
+  
+  /* Hiệu ứng hover cho hình ảnh */
+  .Quy_info_section_image:hover {
+    transform: perspective(800px) rotateY(0) scale(1.02);
+    box-shadow: 
+      0 0.75rem 1.5rem rgba(0, 0, 0, 0.3),
+      0 0 0 0.5rem rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Hình ảnh trong khung */
+  .Quy_info_section_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: brightness(0.9) contrast(1.1);
+  }
+  
+  /* Hiệu ứng hover cho hình ảnh */
+  .Quy_info_section_image:hover img {
+    transform: scale(1.05);
+    filter: brightness(1) contrast(1.05);
+  }
+  
+  /* Hiệu ứng chồng lớp cho hình ảnh */
+  .Quy_info_section_image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+  
+  .Quy_info_section_image:hover::after {
+    opacity: 0.7;
+  }
+  
+  /* Chấm phân trang */
+  .pagination-dots {
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 5;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: rgba(187, 187, 187, 0.7);
+    border-radius: 50%;
+    margin: 0 0.3rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 0.125rem solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Hiệu ứng ripple khi click vào dot */
+  .dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+  }
+  
+  .dot:active::after {
+    width: 120%;
+    height: 120%;
+    opacity: 0;
+  }
+  
+  /* Hiệu ứng hover cho dot */
+  .dot:hover {
+    background-color: rgba(210, 9, 32, 0.7);
+    transform: scale(1.2);
+  }
+  
+  /* Dot đang active */
+  .dot.active {
+    background-color: #D20920;
+    transform: scale(1.3);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 
+      0 0 0.75rem rgba(210, 9, 32, 0.6),
+      0 0 0.25rem rgba(210, 9, 32, 0.4);
+  }
+  
+  /* Nút điều hướng trước/sau */
+  .slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, rgba(210, 9, 32, 0.8) 0%, rgba(167, 27, 39, 0.8) 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+      0 0.25rem 0.75rem rgba(0, 0, 0, 0.3),
+      0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+    opacity: 0.7;
+  }
+  
+  /* Hiệu ứng hover cho nút điều hướng */
+  .slider-nav:hover {
+    background: linear-gradient(135deg, rgba(210, 9, 32, 1) 0%, rgba(167, 27, 39, 1) 100%);
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+    box-shadow: 
+      0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+      0 0 0 0.25rem rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Hiệu ứng khi click vào nút */
+  .slider-nav:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  /* Nút previous */
+  .prev-btn {
+    left: 1.5rem;
+    padding-right: 0.25rem;
+  }
+  
+  /* Nút next */
+  .next-btn {
+    right: 1.5rem;
+    padding-left: 0.25rem;
+  }
+  
+  /* Thêm hiệu ứng nhấp nháy cho nút điều hướng để thu hút sự chú ý */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 
+        0 0.25rem 0.75rem rgba(0, 0, 0, 0.3),
+        0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      box-shadow: 
+        0 0.5rem 1rem rgba(0, 0, 0, 0.4),
+        0 0 0 0.25rem rgba(255, 255, 255, 0.3),
+        0 0 1.5rem rgba(210, 9, 32, 0.5);
+    }
+  }
+  
+  /* Áp dụng hiệu ứng nhấp nháy (chỉ áp dụng khi slider được hiển thị lần đầu) */
+  .Quy_info_slider:hover .slider-nav {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Điều chỉnh responsiveness */
+  @media (max-width: 1024px) {
+    .Quy_info_section_content {
+      padding: 2rem 5%;
+      gap: 2rem;
+    }
+    
+    .Quy_info_section_content_title h3 {
+      font-size: 2.25rem;
+    }
+    
+    .Quy_info_section_content_title p {
+      font-size: 1.125rem;
+      padding: 0.75rem 1.25rem;
+    }
+    
+    .Quy_info_section_image {
+      height: 22rem;
+    }
+    
+    .slider-nav {
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Quy_info_section_content {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem 5%;
+    }
+    
+    .Quy_info_section_content_title,
+    .Quy_info_section_image {
+      max-width: 100%;
+    }
+    
+    .Quy_info_section_content_title {
+      order: 2;
+    }
+    
+    .Quy_info_section_image {
+      order: 1;
+      height: 18rem;
+      transform: perspective(800px) rotateY(0);
+    }
+    
+    .slider-nav {
+      width: 2.75rem;
+      height: 2.75rem;
+      font-size: 1.25rem;
+    }
+    
+    .prev-btn {
+      left: 0.75rem;
+    }
+    
+    .next-btn {
+      right: 0.75rem;
+    }
+    
+    .Quy_info_section_content_title h3 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Quy_hero_section {
+      padding: 2rem 0;
+    }
+    
+    .Quy_hero_section_container {
+      padding: 1.5rem 1rem;
+      border-radius: 1.5rem;
+    }
+    
+    .Quy_hero_section h1 {
+      font-size: 1.7rem;
+      margin-bottom: 3.5rem;
+      line-height: 1.3;
+    }
+    
+    .Quy_hero_section_total_amount {
+      padding: 1.2rem;
+      border-radius: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .Quy_hero_section_total_amount p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .Quy_hero_section_total_amount h2 {
+      font-size: 1.2rem;
+    }
+    
+    .Quy_hero_section_sub_text {
+      font-size: 0.9rem;
+      padding: 0.4rem 1.2rem;
+    }
+    .Quy_info_section_title {
+      font-size: 1.75rem;
+      padding: 1.25rem;
+    }
+    
+    .Quy_info_section_content_title h3 {
+      font-size: 1.75rem;
+    }
+    
+    .Quy_info_section_content_title p {
+      font-size: 1rem;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .Quy_info_section_image {
+      height: 15rem;
+    }
+    
+    .dot {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    .slider-nav {
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1rem;
+    }
+  }
+  /* Responsive Styles for MOMO Vinh Danh Anh Hùng */
+
+/* Base Responsive Settings */
+@media (max-width: 1366px) {
+  .Quy_hero_section h1 {
+    font-size: 3.2rem;
+    line-height: 1.3;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 55rem;
+    height: 14rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 2.2rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 6rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 1.4rem;
+  }
+  
+  .Quy_QR_section_div {
+    padding: 1.5rem;
+  }
+  
+  .Quy_QR_section_QR {
+    width: 25rem;
+    height: 25rem;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 2.8rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 2.2rem;
+  }
+  
+  .Thong_ke_section_title, 
+  .Quy_info_section_title {
+    width: 50rem;
+    font-size: 2.2rem;
+  }
+}
+
+/* Tablets and Medium Screens */
+@media (max-width: 1024px) {
+  .Quy_hero_section h1 {
+    font-size: 3rem;
+    top: 5rem;
+    padding: 0 1rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 50rem;
+    height: 13rem;
+    top: 22rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 2rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 5.5rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 1.2rem;
+  }
+  
+  .Quy_QR_section_div {
+    height: auto;
+    padding: 2rem;
+    border-radius: 3rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Quy_QR_section_QR {
+    width: 22rem;
+    height: 22rem;
+    margin: 0 0 2rem 0;
+  }
+  
+  .Quy_QR_section_QR_info {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 2.5rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 2rem;
+  }
+  
+  .Stats_item h2 {
+    font-size: 4rem;
+  }
+  
+  .Stats_item p {
+    font-size: 1.1rem;
+  }
+  
+  .Thong_ke_section_title, 
+  .Quy_info_section_title {
+    width: 90%;
+    max-width: 40rem;
+    font-size: 2rem;
+  }
+}
+
+/* Small Tablets */
+@media (max-width: 768px) {
+  .Quy_hero_section {
+    height: 90vh;
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 2.5rem;
+    top: 4rem;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 90%;
+    max-width: 35rem;
+    height: 12rem;
+    top: 18rem;
+    padding: 1rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 1.8rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 4.5rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  .Quy_QR_section_div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: 2.5rem;
+  }
+  
+  .Quy_QR_section_QR {
+    width: 18rem;
+    height: 18rem;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 2rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 1.6rem;
+  }
+  
+  .Stats_section {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .Stats_item {
+    width: 100%;
+    max-width: 20rem;
+  }
+  
+  .Thong_ke_section_div {
+    border-radius: 2rem;
+    padding: 2rem 1rem;
+  }
+  
+  .momo-embed-wrapper {
+    border-radius: 1rem;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 667px) {
+  .Quy_hero_section {
+    padding: 3rem 0 2.5rem;
+    min-height: auto;
+  }
+  
+  /* Chuyển sang layout dạng card cho mobile */
+  .Quy_hero_section_container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    order: 1;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 100%;
+    height: auto;
+    padding: 1.5rem;
+    order: 2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 1.4rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 2rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    width: auto;
+    margin: 0;
+    order: 3;
+    align-self: center;
+  }
+  .Quy_QR_section_QR {
+    width: 15rem;
+    height: 15rem;
+    margin-left: 0;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 1.5rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 1.2rem;
+  }
+  
+  .Stats_item h2 {
+    font-size: 3.5rem;
+  }
+  
+  .Stats_item p {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .Thong_ke_section_title, 
+  .Quy_info_section_title {
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 3rem 0 3rem 0;
+  }
+  
+  .Quy_info_section_content_title h3 {
+    font-size: 1.5rem;
+  }
+  
+  .Quy_info_section_content_title p {
+    font-size: 1rem;
+  }
+  
+  .slider-nav {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  
+  .prev-btn {
+    left: 0.5rem;
+  }
+  
+  .next-btn {
+    right: 0.5rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 375px) {
+  .Quy_hero_section h1 {
+    font-size: 1.6rem;
+    top: 2.5rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    height: 7rem;
+    top: 12rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 1rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 1rem;
+  }
+  
+  .Quy_QR_section_QR {
+    width: 12rem;
+    height: 12rem;
+  }
+  
+  .Quy_QR_section_QR_info h3 {
+    font-size: 1.3rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Height */
+@media (max-height: 600px) {
+  .Quy_hero_section {
+    height: auto;
+    min-height: 100vh;
+    padding: 5rem 0;
+  }
+  
+  .Quy_hero_section h1 {
+    position: relative;
+    top: 0;
+    margin-bottom: 8rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    position: relative;
+    top: 0;
+  }
+  
+  .Quy_hero_section_sub_text {
+    position: relative;
+    bottom: 0;
+    margin-top: 2rem;
+  }
+}
+
+/* Fix for QR Section on medium screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Quy_hero_section {
+    height: auto;
+    min-height: 90vh;
+    padding: 6rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 2.8rem;
+    position: relative;
+    top: 0;
+    width: 90%;
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 90%;
+    max-width: 45rem;
+    height: 12rem;
+    position: relative;
+    top: 0;
+    margin: 0 auto;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 1.8rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 4.8rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 1.2rem;
+    position: relative;
+    bottom: 0;
+    margin: 3rem auto 0;
+  }
+  .Quy_QR_section_div {
+    flex-direction: row;
+    height: auto;
+    min-height: 25rem;
+  }
+  
+  .Quy_QR_section_QR {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+  
+  .Quy_QR_section_QR_info {
+    margin-left: 2rem;
+    text-align: left;
+  }
+}
+
+/* Additional refinements for slider */
+@media (max-width: 768px) {
+  .Quy_info_slider {
+    border-radius: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .Quy_info_section_content {
+    flex-direction: column;
+    min-height: auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  .Quy_info_section_content_title,
+  .Quy_info_section_image {
+    max-width: 100%;
+  }
+  
+  .Quy_info_section_image {
+    height: 15rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .Quy_info_section_content_title {
+    order: 2;
+  }
+  
+  .Quy_info_section_image {
+    order: 1;
+  }
+  
+  .pagination-dots {
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+}
+
+/* Fix layout issues for very small devices */
+@media (max-width: 320px) {
+  .Quy_hero_section h1 {
+    font-size: 1.3rem;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 0.9rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 0.9rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    font-size: 0.75rem;
+  }
+  .Quy_QR_section_QR {
+    width: 10rem;
+    height: 10rem;
+  }
+  
+  .Quy_QR_section_QR_info p {
+    font-size: 0.9rem;
+  }
+  
+  .Stats_item h2 {
+    font-size: 2.5rem;
+  }
+  
+  .Thong_ke_section_title, 
+  .Quy_info_section_title {
+    font-size: 1.2rem;
+  }
+}
+/* Landscape Orientation Fix */
+@media (max-height: 500px) and (orientation: landscape) {
+  .Quy_hero_section {
+    padding: 2rem 0;
+  }
+  
+  .Quy_hero_section_container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 1.8rem;
+    width: 100%;
+    margin-bottom: 3rem;
+    order: 1;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 60%;
+    height: auto;
+    padding: 1rem;
+    margin-bottom: 0;
+    order: 2;
+  }
+  
+  .Quy_hero_section_total_amount p {
+    font-size: 1.2rem;
+  }
+  
+  .Quy_hero_section_total_amount h2 {
+    font-size: 2.5rem;
+  }
+  
+  .Quy_hero_section_sub_text {
+    width: 35%;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    order: 3;
+    align-self: flex-end;
+  }
+}
+
+/* Thêm media query cho các thiết bị sử dụng dark mode */
+@media (prefers-color-scheme: dark) {
+  .Quy_hero_section_container {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Đảm bảo hiển thị tốt trên iPad Pro */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .Quy_hero_section {
+    height: auto;
+    min-height: 50vh;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .Quy_hero_section h1 {
+    font-size: 3rem;
+    position: relative;
+    top: 0;
+    margin-bottom: 5rem;
+  }
+  
+  .Quy_hero_section_total_amount {
+    width: 50rem;
+    height: 12rem;
+    position: relative;
+    top: 0;
+    margin: 0 auto;
+  }
+  
+  .Quy_hero_section_sub_text {
+    position: relative;
+    bottom: 0;
+    margin-top: 3rem;
+  }
+}

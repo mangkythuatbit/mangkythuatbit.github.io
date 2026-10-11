@@ -1,0 +1,4 @@
+[30-Apr-2025 12:31:56 UTC] PHP Warning:  mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/u21s4j7n6y8o/public_html/Config/connect.php on line 7
+[30-Apr-2025 12:31:56 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/u21s4j7n6y8o/public_html/Config/connect.php on line 7
+[30-Apr-2025 12:32:02 UTC] PHP Warning:  mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/u21s4j7n6y8o/public_html/Config/connect.php on line 7
+[30-Apr-2025 12:32:02 UTC] PHP Warning:  mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/u21s4j7n6y8o/public_html/Config/connect.php on line 7
