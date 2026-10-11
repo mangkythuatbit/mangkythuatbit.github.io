@@ -1,64 +1,768 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta name="google-site-verification" content="8Vgp2JsVqjQLqCvAaYENMiSxGMrACY5ZDjK6eegb9LA" />
-  <meta name="title" content="ĐOÀN - HỘI KHOA CÔNG NGHỆ THÔNG TIN KINH DOANH UEH">
-<meta property="og:title" content="ĐOÀN - HỘI KHOA CÔNG NGHỆ THÔNG TIN KINH DOANH UEH">
-  <meta charset="UTF-8"> <!-- Thiết lập mã hóa ký tự -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  
-  <!-- Responsive cho di động -->
-  <title>Đoàn - Hội khoa Công nghệ thông tin kinh doanh UEH</title>
-  <meta name="description" content="Trang thông tin chính thức của Đoàn – Hội khoa Công nghệ thông tin kinh doanh (BIT), trực thuộc Đại học UEH, đồng hành cùng sinh viên qua các hoạt động học thuật và phong trào." />
-
-  <!-- Preconnect & Import Font Roboto -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ Đoàn - Hội khoa Công nghệ thông tin kinh doanh</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" 
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- FontAwesome for modern icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      background-color: #f8fafc;
+      padding-top: 70px; /* Space for fixed navbar */
+      overflow-x: hidden;
+    }
+    
+    /* NAVBAR CHUNG */
+    .navbar {
+      position: fixed;
+      top: 0;      /* Ghim navbar lên đầu trang */
+      left: 0;     /* Canh trái trang */
+      width: 100%;    /* Trải rộng 100% chiều ngang */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: white;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+    
+    /* LOGO */
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .logo img {
+      height: 35px;
+      margin-right: 10px;
+    }
+    .logo span {
+      font-size: 18px;
+      font-weight: 800;
+      background: linear-gradient(to right, #6CA9C3, #122CD4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* NAV-LINKS (MENU) */
+    .nav-links {
+      display: flex;
+      list-style: none;
+      position: relative;
+      justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+      align-items: center;     /* Căn giữa các phần tử theo chiều dọc */
+      width: 100%;             /* Đảm bảo thanh chứa chiếm đầy chiều ngang */
+    }
+    
+    .nav-links li {
+      margin: 0 15px;
+      position: relative;
+    }
+    
+    /* Hiệu ứng hover nền đỏ chữ vàng cho nav-links - cả desktop và mobile */
+    .nav-links a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 10px 20px;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      border-radius: 5px;
+    }
 
-  <!-- Kết nối file CSS chính -->
-  <link rel="stylesheet" href="./assets/css/Trang_chu_khoa.css">
+    /* Nền đỏ khi hover -> Chuyển sang tone màu BIT gradient hiện đại */
+    .nav-links a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(to right, #6CA9C3 0%, #122CD4 47%, #3F6BCC 100%); /* Màu nền xanh gradient*/
+      transition: all 0.3s ease-in-out;
+      z-index: -1;
+      border-radius: 5px;
+    }
+
+    /* Chữ vàng khi hover */
+    .nav-links a:hover {
+      color: #ffffff; /* Màu chữ trắng/vàng nổi bật */
+    }
+
+    /* Hiệu ứng mở rộng nền khi hover */
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+
+    /* Điều chỉnh cho mobile */
+    @media screen and (max-width: 768px) {
+      .nav-links a {
+        width: 100%;
+        padding: 15px 25px;
+        margin: 5px 0;
+        text-align: left;
+      }
+      
+      .nav-links a::before {
+        background: linear-gradient(to right, #6CA9C3 0%, #122CD4 47%, #3F6BCC 100%);
+      }
+      
+      .nav-links a:hover {
+        color: #ffffff;
+      }
+      
+      .nav-links a:hover::before {
+        width: 100%;
+      }
+    }
+
+    /* INDICATOR */
+    .indicator {
+      position: absolute;
+      bottom: -5px;
+      height: 4px;
+      background: linear-gradient(to right, #4c83ee, #0026ff);
+      width: 0;
+      left: 0;
+      transition: all 0.3s ease-in-out;
+      border-radius: 2px;
+    }
+    
+    /* Nút hamburger cho mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1001;
+      margin-right: 15px;
+    }
+    
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Overlay cho mobile */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      
+      .logo {
+        padding: 10px 0;
+        z-index: 1001;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        flex-direction: column;
+        background-color: white;
+        width: 80%;
+        height: 100vh;
+        padding-top: 70px;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        justify-content: flex-start;
+        align-items: flex-start;
+        z-index: 1000;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-links li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: left;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 15px 25px;
+        width: 100%;
+      }
+      
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+      
+      .overlay.active {
+        display: block;
+      }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+     background-image: url("https://scontent.fdad3-4.fna.fbcdn.net/v/t39.30808-6/567501544_1953721365250034_302627372819300057_n.png?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=2285d6&_nc_ohc=TtU8V_CNDmEQ7kNvwEhXAF9&_nc_oc=Adq6_Qd9xvykSchKwdtcrBcjTlzDrqqPGdMdrc2y79cnwaIaNT_Y_9urbiQNBTX78vpTk1DtFrLIinYB-MebG8O-&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&_nc_gid=p3v_M7eO3GqJktu6Wt-wYA&_nc_ss=7b2a8&oh=00_AQPObWO_Gbc9MaeeCImU-cW0XYxSFagIVaWsFom3tNmE4w&oe=6AD155EE");
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #122CD4;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background-color: white;
+      color: #122CD4;
+    }
+
+    /* ABOUT SECTION */
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 50px;
+      color: #1a202c;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #6CA9C3, #122CD4);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .about-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      border-top: 4px solid #122CD4;
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .about-card i {
+      font-size: 40px;
+      color: #122CD4;
+      margin-bottom: 20px;
+    }
+
+    .about-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #2d3748;
+    }
+
+    .about-card p {
+      color: #4a5568;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* FEATURED ACTIVITIES & RESD 2026 */
+    .resd-banner {
+      background: linear-gradient(rgba(18, 44, 212, 0.85), rgba(63, 107, 204, 0.85)), url('https://placehold.co/1200x500/122CD4/ffffff?text=RESD+2026') center/cover no-repeat;
+      color: white;
+      border-radius: 16px;
+      padding: 60px 40px;
+      margin: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(18, 44, 212, 0.3);
+    }
+
+    .resd-banner h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .resd-banner p {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-img {
+      height: 200px;
+      background-color: #cbd5e1;
+      position: relative;
+    }
+
+    .news-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 20px;
+    }
+
+    .news-date {
+      font-size: 0.85rem;
+      color: #718096;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .news-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #2d3748;
+      line-height: 1.4;
+    }
+
+    .news-content p {
+      font-size: 0.95rem;
+      color: #4a5568;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .read-more {
+      color: #122CD4;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s;
+    }
+
+    .read-more:hover {
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1a202c;
+      color: #cbd5e1;
+      padding: 60px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: #3F6BCC;
+    }
+
+    .footer-col p, .footer-col li {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      background-color: #2d3748;
+      color: white;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background-color: #122CD4;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #2d3748;
+      font-size: 0.9rem;
+      color: #a0aec0;
+    }
+  </style>
 </head>
 <body>
-  <!-- Phần đầu tiên của trang: Hero Section -->
-  <div id="header-container"></div>
-<div class="hero-section" style="
-    position: relative; 
-    height: 100vh; 
-    overflow: hidden; 
-    background-image: url('./ModelViews/Thanh-Navigation-khoa/assets/Intro-logo.gif') !important;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-">
-    <div class="content">
-      <h1>ĐOÀN - HỘI KHOA CÔNG NGHỆ THÔNG TIN KINH DOANH</h1>
-      <p>BRINGING BUSINESS AND TECHNOLOGY TOGETHER</p>
-          <!-- Thanh ngang -->
-        <hr class="divider">
-      <!-- Nút bấm để cuộn xuống phần 'Về Chúng Tôi' -->
-      <button id="scroll-button">TÌM HIỂU</button>
+  <!-- Phần thanh Navbar bắt đầu từ đây -->
+  <nav class="navbar">
+    <!-- Hamburger Menu cho Mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
-  <div id="footer-container"></div>
+    <div class="logo">
+      <img src="./ModelViews/Thanh-Navigation-khoa/assets/images/bit-logo.png" alt="Logo BIT" onerror="this.src='./ModelViews/Thanh-Navigation-khoa/assets/images/bit-logo.png'">
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="./index.html">TRANG CHỦ</a></li>
+      <li><a href="./RESD/">R.E.S.D 2026</a></li>
+      <div class="indicator" id="indicator"></div>
+    </ul>
+  </nav>
+  <!-- Overlay cho mobile menu -->
+  <div class="overlay" id="overlay"></div>
 
-  <!-- Kết nối file JavaScript -->
-  <script src="./assets/js/Trang_chu_khoa.js"></script>
-  <script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "Organization",
-"name": "Đoàn - Hội khoa Công nghệ thông tin kinh doanh UEH | BUSINESS INFORMATION TECHNOLOGY",
-"alternateName": [
-"Đoàn – Hội Khoa Công nghệ Thông tin Kinh doanh UEH",
-"Hội khoa Công nghệ thông tin kinh doanh UEH",
-"Doan Hoi BIT UEH"
-],
-"url": "https://doanhoibit.com"
-}
-</script>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Đoàn Thanh niên - Hội Sinh viên Khoa CNTT Kinh doanh</h1>
+      <p>Nơi ươm mầm tài năng công nghệ, kết nối đam mê kinh tế số và kiến tạo thế hệ sinh viên bản lĩnh, sáng tạo, hội nhập.</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Khám phá ngay</a>
+        <a href="./RESD/" class="btn btn-outline"><i class="fa-solid fa-rocket"></i> R.E.S.D 2026</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">Về Đoàn - Hội Khoa BIT</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <i class="fa-solid fa-bullseye"></i>
+        <h3>Sứ mệnh & Mục tiêu</h3>
+        <p>Đồng hành cùng sinh viên Khoa Công nghệ thông tin kinh doanh trong học tập, nghiên cứu khoa học và phát triển kỹ năng mềm thực tế.</p>
+      </div>
+      <div class="about-card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Chuyên môn & Công nghệ</h3>
+        <p>Kết hợp giữa kiến thức Quản trị Kinh doanh và Công nghệ thông tin hiện đại, Big Data, AI, Thương mại điện tử và Chuyển đổi số.</p>
+      </div>
+      <div class="about-card">
+        <i class="fa-solid fa-users-line"></i>
+        <h3>Môi trường Năng động</h3>
+        <p>Tạo sân chơi lành mạnh qua các câu lạc bộ, chiến dịch tình nguyện Mùa hè xanh, Tiếp sức mùa thi và các cuộc thi học thuật lớn.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- R.E.S.D 2026 Highlight Banner -->
+  <section class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="resd-banner">
+      <h2>Sự kiện trọng điểm: R.E.S.D 2026</h2>
+      <p>Chuỗi hoạt động nghiên cứu khoa học, học thuật và trải nghiệm công nghệ lớn nhất trong năm của Khoa CNTT Kinh doanh. Cùng đón chờ những ý tưởng sáng tạo đột phá từ các tài năng trẻ!</p>
+      <a href="./RESD/" class="btn btn-primary">Tìm hiểu chi tiết R.E.S.D 2026 <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- Featured News & Activities Section -->
+  <section class="section">
+    <h2 class="section-title">Tin tức & Hoạt động nổi bật</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://placehold.co/400x200/3F6BCC/ffffff?text=Hoi+Thao+AI" alt="Hội thảo AI">
+        </div>
+        <div class="news-content">
+          <div class="news-date"><i class="fa-regular fa-calendar"></i> 10/10/2026</div>
+          <h3>Workshop: Ứng dụng Trí tuệ Nhân tạo trong Kinh doanh số</h3>
+          <p>Buổi chia sẻ kiến thức chuyên sâu từ các chuyên gia công nghệ hàng đầu dành riêng cho sinh viên khoa BIT.</p>
+          <a href="#" class="read-more">Xem chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://placehold.co/400x200/6CA9C3/ffffff?text=Ky+Nang+Mem" alt="Kỹ năng mềm">
+        </div>
+        <div class="news-content">
+          <div class="news-date"><i class="fa-regular fa-calendar"></i> 05/10/2026</div>
+          <h3>Hành trang kỹ năng cho sinh viên năm nhất Khoa BIT</h3>
+          <p>Chương trình định hướng giúp các bạn tân sinh viên nhanh chóng thích nghi với môi trường đại học năng động.</p>
+          <a href="#" class="read-more">Xem chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">
+          <img src="https://placehold.co/400x200/122CD4/ffffff?text=Lich+Thi+Dau" alt="Thể thao sinh viên">
+        </div>
+        <div class="news-content">
+          <div class="news-date"><i class="fa-regular fa-calendar"></i> 28/09/2026</div>
+          <h3>Khai mạc Giải bóng đá truyền sinh viên Khoa CNTT Kinh doanh</h3>
+          <p>Sân chơi bổ ích kết nối tinh thần đoàn kết, rèn luyện sức khỏe và nhiệt huyết tuổi trẻ của các chi đoàn.</p>
+          <a href="#" class="read-more">Xem chi tiết <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Đoàn - Hội Khoa BIT</h4>
+        <p>Đơn vị trực thuộc Đoàn Thanh niên - Hội Sinh viên trường, luôn sẵn sàng đồng hành và phát triển cùng sinh viên Khoa Công nghệ thông tin kinh doanh.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Liên kết nhanh</h4>
+        <ul>
+          <li><a href="./index.html">Trang chủ</a></li>
+          <li><a href="./RESD/">R.E.S.D 2026</a></li>
+          <li><a href="#about">Về chúng tôi</a></li>
+          <li><a href="#">Hoạt động Đoàn - Hội</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Phòng làm việc Đoàn - Hội Khoa BIT</p>
+        <p><i class="fa-solid fa-envelope"></i> doanhoibit@university.edu.vn</p>
+        <p><i class="fa-solid fa-phone"></i> (028) 38xx xxxx</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Đoàn - Hội Khoa Công nghệ thông tin kinh doanh. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Link JS để chạy thanh bar - đặt ở cuối body để đảm bảo DOM đã load -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const nav = document.querySelector(".nav-links");
+      const indicator = document.getElementById("indicator");
+      
+      // Thêm phần JS cho mobile
+      const hamburger = document.getElementById("hamburger");
+      const overlay = document.getElementById("overlay");
+      
+      // Toggle mobile menu
+      if (hamburger) {
+        hamburger.addEventListener("click", function() {
+          nav.classList.toggle("active");
+          hamburger.classList.toggle("active");
+          overlay.classList.toggle("active");
+          
+          // Ngăn cuộn trang khi menu mở
+          if (nav.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+          } else {
+            document.body.style.overflow = "auto";
+          }
+        });
+      }
+      
+      // Đóng menu khi click vào overlay
+      if (overlay) {
+        overlay.addEventListener("click", function() {
+          nav.classList.remove("active");
+          hamburger.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+      }
+      
+      // Đóng menu khi click vào link
+      navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+          if (window.innerWidth <= 768) {
+            nav.classList.remove("active");
+            hamburger.classList.remove("active");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+    });
+
+    // Chiều cao của thanh xanh ứng với Thanh Navbar
+    window.addEventListener("load", adjustNavLinks);
+    window.addEventListener("resize", adjustNavLinks);
+    
+    function adjustNavLinks() {
+      const navbar = document.querySelector(".navbar");
+      const links = document.querySelectorAll(".nav-links a");
+      
+      if (navbar) {
+        const navbarHeight = navbar.offsetHeight; // Lấy chiều cao navbar
+        links.forEach(link => {
+          // Additional sizing adjustments if needed
+        });
+      }
+    }
+  </script>
 </body>
 </html>
