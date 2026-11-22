@@ -210,6 +210,13 @@ const KEY = 'bit_session';
 const session = () => { try { const s = JSON.parse(localStorage.getItem(KEY)); return s && s.token ? s : null; } catch (e) { return null; } };
 const goLogin = () => location.href = CFG.LOGIN + '?next=' + encodeURIComponent(location.pathname.split('/').pop() || 'index.html');
 const initial = n => esc((n || '?').trim().slice(0, 1).toUpperCase());
+  /* ===== Khách (không đăng nhập): biệt danh, like, bình luận lưu local ===== */
+const LS = { guest: 'bit_guest', likes: 'bit_local_likes', cmts: 'bit_local_comments' };
+const lsGet = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch (e) { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { notice('Trình duyệt không cho lưu dữ liệu cục bộ.', true); } };
+let guest = lsGet(LS.guest, { name: '' });
+let localLikes = lsGet(LS.likes, {});
+let localComments = lsGet(LS.cmts, []);   // mới nhất ở đầu
 
 async function apiGet(p) { const r = await fetch(CFG.API + '?' + new URLSearchParams(p)); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }
 async function apiPost(body) {   // text/plain để tránh preflight CORS của Apps Script
@@ -242,19 +249,28 @@ $('nav').addEventListener('click', e => { if (e.target.closest('a')) { $('header
 
 /* Chương trình */
 let programs = [], gallery = {};
+const likeCount = p => (+p.likes || 0) + (localLikes[p.id] && !p.liked ? 1 : 0);
 function renderPrograms() {
   const list = programs.length ? programs : [{ id: '', name: 'Poster chương trình', poster: '' }];
   $('track').innerHTML = list.map(p => `
     <article class="program"><div class="program__img">${imgOr(driveImg(p.poster), p.name)}</div>
-      <button type="button" class="like" data-id="${esc(p.id)}" aria-pressed="${!!p.liked}" aria-label="Thích ${esc(p.name)}"><i class="fa-regular fa-heart"></i><span>${+p.likes || 0}</span></button></article>`).join('');
+      <button type="button" class="like" data-id="${esc(p.id)}" aria-pressed="${!!(p.liked || localLikes[p.id])}" aria-label="Thích ${esc(p.name)}"><i class="fa-regular fa-heart"></i><span>${likeCount(p)}</span></button></article>`).join('');
   const hero = programs.slice(0, 3);
   $('heroPosters').innerHTML = [0, 1, 2].map(i => `<div>${imgOr(driveImg(hero[i] && hero[i].poster), hero[i] ? hero[i].name : 'Poster ' + (i + 1))}</div>`).join('');
 }
 $('track').addEventListener('click', async e => {
   const b = e.target.closest('.like'); if (!b || !b.dataset.id) return;
-  const s = session(); if (!s) return goLogin();
+  const id = b.dataset.id, s = session();
+  if (!s) {   // khách: lưu local
+    if (localLikes[id]) delete localLikes[id]; else localLikes[id] = 1;
+    lsSet(LS.likes, localLikes);
+    const p = programs.find(x => String(x.id) === id) || {};
+    b.setAttribute('aria-pressed', !!localLikes[id]);
+    b.querySelector('span').textContent = likeCount(p);
+    return;
+  }
   try {
-    const r = await apiPost({ action: 'like', token: s.token, id: b.dataset.id });
+    const r = await apiPost({ action: 'like', token: s.token, id });
     if (!r.ok) throw new Error(r.error);
     b.setAttribute('aria-pressed', r.liked); b.querySelector('span').textContent = r.likes;
   } catch (err) { notice('Không thích được: ' + err.message, true); }
@@ -284,11 +300,23 @@ $('chips').addEventListener('click', e => { const c = e.target.closest('.chip');
 /* Bình luận */
 let comments = [], newest = true;
 function renderCommentBox() {
-  const s = session();
-  $('cmt-box').innerHTML = s ? `<form class="comment-form" id="cmt-form"><span class="avatar" style="width:48px;height:48px" aria-hidden="true">${initial(s.name)}</span><input id="cmt-input" placeholder="Gửi lời yêu thương..." aria-label="Viết bình luận" maxlength="300"></form>`
-    : `<div class="comment-login"><span>Đăng nhập để tham gia bình luận.</span><a class="btn login-btn" href="${CFG.LOGIN}?next=index.html">Đăng nhập</a></div>`;
-  const f = $('cmt-form'); if (f) f.onsubmit = async e => {
-    e.preventDefault(); const i = $('cmt-input'), v = i.value.trim(); if (!v) return; i.disabled = true;
+  const s = session(), name = s ? s.name : guest.name;
+  if (!name) {   // chưa có biệt danh
+    $('cmt-box').innerHTML = `<form class="comment-form" id="nick-form"><span class="avatar" style="width:48px;height:48px" aria-hidden="true"><i class="fa-solid fa-user"></i></span><input id="nick-input" placeholder="Nhập biệt danh của bạn để bình luận..." aria-label="Biệt danh" maxlength="30"><button type="submit" class="btn login-btn">Lưu</button></form>`;
+    $('nick-form').onsubmit = e => { e.preventDefault(); const v = $('nick-input').value.trim(); if (!v) return; guest = { name: v }; lsSet(LS.guest, guest); renderCommentBox(); };
+    return;
+  }
+  $('cmt-box').innerHTML = `<form class="comment-form" id="cmt-form"><span class="avatar" style="width:48px;height:48px" aria-hidden="true">${initial(name)}</span><input id="cmt-input" placeholder="Gửi lời yêu thương..." aria-label="Viết bình luận" maxlength="300"></form>`
+    + (s ? '' : `<p class="notice">Đang bình luận với biệt danh <b>${esc(name)}</b> · <a href="#" id="nick-change" style="text-decoration:underline">Đổi biệt danh</a> · <a href="${CFG.LOGIN}?next=index.html" style="text-decoration:underline">Đăng nhập</a></p>`);
+  const nc = $('nick-change'); if (nc) nc.onclick = e => { e.preventDefault(); guest = { name: '' }; lsSet(LS.guest, guest); renderCommentBox(); };
+  $('cmt-form').onsubmit = async e => {
+    e.preventDefault(); const i = $('cmt-input'), v = i.value.trim(); if (!v) return;
+    if (!s) {   // khách: lưu local
+      localComments.unshift({ name: guest.name, text: v, time: new Date().toLocaleString('vi-VN') });
+      localComments = localComments.slice(0, 200); lsSet(LS.cmts, localComments);
+      i.value = ''; renderComments(); return;
+    }
+    i.disabled = true;
     try {
       const r = await apiPost({ action: 'comment', token: s.token, text: v });
       if (!r.ok) throw new Error(r.error); i.value = ''; comments = r.comments; renderComments();
@@ -297,8 +325,9 @@ function renderCommentBox() {
   };
 }
 function renderComments() {
-  $('cmt-count').textContent = comments.length + ' bình luận';
-  const list = newest ? comments : [...comments].reverse();
+  const all = [...localComments, ...comments];
+  $('cmt-count').textContent = all.length + ' bình luận';
+  const list = newest ? all : [...all].reverse();
   $('cmt-list').innerHTML = list.map(c => `<div class="comment"><span class="avatar" aria-hidden="true">${initial(c.name)}</span><div><b>${esc(c.name)}</b><small>${esc(c.time)}</small><p>${esc(c.text)}</p></div></div>`).join('');
 }
 $('sort').onclick = () => { newest = !newest; $('sort').querySelector('span').textContent = newest ? 'Mới nhất' : 'Cũ nhất'; renderComments(); };
