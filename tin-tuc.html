@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tin tức - Hoạt động | Đoàn - Hội khoa Công nghệ thông tin kinh doanh (BIT)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+:root{--color-blue-100:#D2E4F1;--color-blue-300:#7FAED2;--color-blue-500:#367CB3;--color-blue-600:#2E6996;--color-blue-700:#24537A;
+--color-dark-50:#F3F1F2;--color-dark-100:#E4E0E1;--color-dark-300:#A69FA2;--color-dark-500:#4F464B;--color-dark-900:#1F1B1D;
+--primary-color:var(--color-blue-500);--primary-hover:var(--color-blue-600);--primary-color-2:#EAF2F8;--text-color:var(--color-dark-500);--text-muted:#7d7579;--error-color:#dc3545;
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;
+--container-max:1200px;--container-pad:var(--space-5);--radius-sm:8px;--radius-card:16px;--radius-xl:32px;--radius-pill:999px;
+--shadow-md:0 8px 24px rgba(31,27,29,.12);--shadow-header:0 4px 20px rgba(31,27,29,.08);--shadow-focus:0 0 0 4px var(--color-blue-100);--transition-base:200ms ease;
+--gradient-primary:linear-gradient(135deg,var(--color-blue-500) 0%,var(--color-blue-700) 100%)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Roboto',sans-serif;font-size:16px;line-height:1.5;color:var(--text-color);background:#fff}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}h1,h2,h3,h4,p,ul{margin:0}ul{padding:0;list-style:none}button,input{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:44px;padding:10px var(--space-6);border:0;border-radius:8px;background:var(--primary-color);color:#fff;font-weight:700;transition:background var(--transition-base)}
+.btn:hover{background:var(--primary-hover)}.btn:disabled{opacity:.6;cursor:not-allowed}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;padding:8px 16px;background:var(--primary-color);color:#fff;border-radius:8px}.skip:focus{top:8px}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;width:100%;height:100%;color:var(--color-dark-300);font-weight:500;padding:12px;background:repeating-linear-gradient(135deg,var(--color-dark-100),var(--color-dark-100) 10px,var(--color-dark-50) 10px,var(--color-dark-50) 20px)}
+.img{width:100%;height:100%;object-fit:cover}
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:var(--shadow-header)}
+.header__inner{position:relative;max-width:var(--container-max);margin:0 auto;padding:12px var(--container-pad);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--space-5);min-height:68px}
+.brand{display:inline-flex;align-items:center}.brand__logo{height:40px;width:auto}.logo-fallback{font-size:28px;font-weight:700;font-style:italic;color:var(--primary-color)}
+.nav{display:flex;gap:8px}
+.nav a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;text-transform:uppercase;transition:background var(--transition-base),color var(--transition-base)}
+.nav a:hover{background:var(--primary-color-2);color:var(--primary-color)}.nav a.is-active{background:var(--primary-color);color:#fff}
+.user{justify-self:end;display:flex;align-items:center;gap:12px}
+.icon-btn{display:grid;place-items:center;width:40px;height:40px;border:0;background:none;border-radius:999px;font-size:20px}.icon-btn:hover{background:var(--primary-color-2)}
+.avatar{width:36px;height:36px;flex:none;border-radius:999px;background:var(--color-blue-300);color:#fff;display:grid;place-items:center;font-weight:700}
+.user__name{display:inline-flex;align-items:center;gap:8px;max-width:200px;padding:8px 16px;border:1px solid var(--color-dark-100);border-radius:8px;background:#fff;font-size:14px;font-weight:500;white-space:nowrap}
+.user__name span{overflow:hidden;text-overflow:ellipsis}.user__name:hover{border-color:var(--primary-color);color:var(--primary-color)}
+.login-btn{min-height:40px;padding:6px 24px;font-size:14px}.burger{display:none}
+/* Trang */
+.sec-head{text-align:center}
+.sec-title{display:inline-block;margin:var(--space-6) 0;padding:24px 64px;font-size:36px;line-height:1.3;font-weight:700;color:#fff;text-transform:uppercase;border-radius:32px 32px 32px 0;background:var(--gradient-primary)}
+.tools{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:var(--space-6)}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{padding:8px 20px;border:1px solid var(--color-dark-100);border-radius:999px;background:#fff;font-weight:500;transition:background var(--transition-base),color var(--transition-base),border-color var(--transition-base)}
+.chip:hover{border-color:var(--primary-color);color:var(--primary-color)}.chip[aria-pressed=true]{background:var(--primary-color);border-color:var(--primary-color);color:#fff}
+.search{position:relative;flex:0 1 320px}.search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--color-dark-300)}
+.search input{width:100%;height:44px;padding:0 16px 0 40px;border:1px solid var(--color-dark-100);border-radius:999px;background:#fff}.search input:focus{outline:none;border-color:var(--primary-color)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{display:flex;flex-direction:column;border-radius:var(--radius-card);overflow:hidden;background:#fff;box-shadow:var(--shadow-md);transition:transform var(--transition-base)}.card:hover{transform:translateY(-4px)}
+.card__img{aspect-ratio:16/10;background:var(--color-dark-50)}
+.card__body{display:flex;flex-direction:column;gap:8px;padding:20px;flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:13px;color:var(--text-muted)}
+.tag{padding:2px 12px;border-radius:999px;background:var(--primary-color-2);color:var(--color-blue-700);font-weight:500}
+.card h3{font-size:18px;line-height:1.4;color:var(--color-dark-900)}.card:hover h3{color:var(--primary-color)}
+.card p{font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{display:flex;justify-content:center;margin-top:var(--space-6)}
+.notice{margin:16px 0;font-size:14px;color:var(--color-blue-700);text-align:center}.notice.is-error{color:var(--error-color)}.notice[hidden]{display:none}
+.empty{padding:var(--space-7) 0;text-align:center;color:var(--text-muted)}
+/* Bài viết */
+.article{max-width:760px;margin:0 auto}
+.back{display:inline-flex;align-items:center;gap:8px;margin:var(--space-5) 0;padding:8px 0;font-weight:500;color:var(--primary-color);background:none;border:0}.back:hover{text-decoration:underline}
+.article h1{margin:12px 0 var(--space-5);font-size:32px;line-height:1.3;color:var(--color-dark-900)}
+.cover{margin:0 0 var(--space-5);aspect-ratio:16/9;border-radius:var(--radius-card);overflow:hidden;box-shadow:var(--shadow-md)}
+.content{font-size:17px;line-height:1.75}.content p{margin-bottom:16px}.content h2{margin:32px 0 12px;font-size:24px;color:var(--color-dark-900)}.content h3{margin:24px 0 8px;font-size:20px;color:var(--color-dark-900)}.content h4{margin:20px 0 8px;font-size:17px;color:var(--color-dark-900)}
+.content ul,.content ol{margin:0 0 16px;padding-left:24px}.content ul{list-style:disc}.content a{color:var(--primary-color);text-decoration:underline}
+.content img{max-width:100%;height:auto;margin:16px auto;border-radius:8px}
+/* Footer */
+.footer{margin-top:var(--space-8);background:var(--color-dark-50);padding:var(--space-6) 0 var(--space-5)}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:var(--space-6);max-width:var(--container-max);margin:0 auto;padding:0 var(--container-pad)}
+.footer__brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}.footer__brand strong{color:var(--color-dark-900)}.footer__brand span{font-size:13px;color:var(--text-muted)}
+.soc{display:flex;gap:12px;margin-top:8px}.soc a{display:grid;place-items:center;width:38px;height:38px;border-radius:999px;background:var(--primary-color);color:#fff;transition:background var(--transition-base)}.soc a:hover{background:var(--color-blue-700)}
+.footer h4{margin:0 0 12px;font-size:15px;color:var(--color-blue-700)}
+.footer li a{display:inline-block;padding:4px 0;font-size:14px}.footer li a:hover{color:var(--primary-color)}
+.contact li{display:flex;gap:12px;padding:4px 0;font-size:14px}.contact i{width:16px;margin-top:4px;color:var(--primary-color)}
+.footer__copy{max-width:var(--container-max);margin:var(--space-6) auto 0;padding:16px var(--container-pad) 0;border-top:1px solid var(--color-dark-100);text-align:center;font-size:13px;color:var(--text-muted)}
+.to-top{position:fixed;right:24px;bottom:24px;z-index:40;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:999px;background:var(--primary-color);color:#fff;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:opacity var(--transition-base)}.to-top.is-show{opacity:1;pointer-events:auto}
+@media (max-width:900px){body{font-size:15px}
+.header__inner{display:flex;justify-content:space-between}.burger{display:grid;order:3}.user{margin-left:auto}.user__name{max-width:120px}
+.nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:12px var(--container-pad) 16px;background:#fff;box-shadow:var(--shadow-header)}.header[data-open=true] .nav{display:flex}
+.sec-title{font-size:20px;padding:16px 32px}.grid{grid-template-columns:1fr 1fr}.search{flex-basis:100%}
+.article h1{font-size:26px}.content{font-size:16px}.footer__grid{grid-template-columns:1fr 1fr}.footer__brand{grid-column:1/-1}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#noi-dung">Bỏ qua điều hướng</a>
+<header class="header" id="header">
+  <div class="header__inner"> 
+    <a href="./index.html" class="brand" aria-label="Trang chủ BIT">
+      <img src="SINHVIEN5TOT/assets/bit-logo.png" class="brand__logo" id="logo" alt="Logo BIT">
+    </a> 
+    <nav class="nav" id="nav" aria-label="Điều hướng chính">
+      <a href="./index.html">Trang chủ</a>
+      <a href="./tin-tuc.html" class="is-active" aria-current="page">Tin tức - Hoạt động</a>
+    </nav> 
+    <div class="user" id="userbox"></div> 
+    <button type="button" class="icon-btn burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="nav">
+      <i class="fa-solid fa-bars"></i>
+    </button> 
+  </div>
+</header>
+
+
+<main id="noi-dung"><div class="container">
+  <!-- Danh sách -->
+  <section id="view-list">
+    <div class="sec-head"><h1 class="sec-title">Tin tức - Hoạt động</h1></div>
+    <div class="tools">
+      <div class="chips" id="chips" aria-label="Lọc theo danh mục"></div>
+      <label class="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input id="q" type="search" placeholder="Tìm bài viết..." aria-label="Tìm bài viết"></label>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="more"><button type="button" class="btn" id="more" hidden>Xem thêm</button></div>
+  </section>
+  <!-- Bài viết -->
+  <section id="view-article" hidden>
+    <article class="article">
+      <button type="button" class="back" id="back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Tất cả bài viết</button>
+      <div class="meta" id="a-meta"></div>
+      <h1 id="a-title"></h1>
+      <div class="cover" id="a-cover" hidden></div>
+      <div class="content" id="a-content" aria-live="polite"></div>
+    </article>
+  </section>
+  <p class="notice" id="notice" role="status" hidden></p>
+</div></main>
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand"><strong>Đoàn - Hội khoa<br>Công nghệ thông tin kinh doanh</strong><span>Bring Business and Technology Together</span>
+      <div class="soc">
+        <a href="https://www.facebook.com/groups/1129624948171351" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="mailto:doanhoi.bit@ueh.edu.vn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div></div>
+    <nav aria-label="Về Đoàn - Hội khoa"><h4>Về Đoàn - Hội khoa</h4><ul><li><a href="#">Giới thiệu</a></li><li><a href="#">Chuyên ngành</a></li><li><a href="#">Các hoạt động</a></li></ul></nav>
+    <nav aria-label="Tin tức"><h4>Tin tức</h4><ul id="foot-cats"><li><a href="./tintuc.html">Tất cả bài viết</a></li></ul></nav>
+    <div><h4>Liên hệ</h4><ul class="contact">
+      <li><i class="fa-solid fa-envelope"></i><a href="mailto:doanhoi.bit@ueh.edu.vn">doanhoi.bit@ueh.edu.vn</a></li>
+      <li><i class="fa-brands fa-facebook"></i><a href="https://www.facebook.com/groups/1129624948171351" target="_blank" rel="noopener">Group Cùng BIT chinh phục SV5T</a></li></ul></div>
+  </div>
+  <p class="footer__copy">© 2026 Đoàn TN – Hội SV khoa Công nghệ thông tin kinh doanh (BIT), UEH</p>
+</footer>
+<button type="button" class="to-top" id="toTop" aria-label="Lên đầu trang"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+const CFG = { API: 'https://script.google.com/macros/s/AKfycby1IHduGtQ7wtcxRXCo43WCRbnHpFgjLoDurq1vfDB5Kpm6_9BiqfkvzQ6aJ5gB8rk/exec', LOGIN: './dang-nhap.html', PER: 9, ALL: 'Tất cả' };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fold = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/gi, 'd').toLowerCase();
+const KEY = 'bit_session';
+const session = () => { try { const s = JSON.parse(localStorage.getItem(KEY)); return s && s.token ? s : null; } catch (e) { return null; } };
+const initial = n => esc((n || '?').trim().slice(0, 1).toUpperCase());
+async function apiGet(p) { const r = await fetch(CFG.API + '?' + new URLSearchParams(p)); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }
+function driveImg(raw, w) {
+  const v = String(raw || '').trim(); if (!v) return '';
+  const m = v.match(/\/d\/([\w-]{20,})/) || v.match(/[?&]id=([\w-]{20,})/) || (/^[\w-]{25,}$/.test(v) ? [0, v] : null);
+  return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w${w || 800}` : (/^https:\/\//i.test(v) ? v : '');
+}
+const imgOr = (url, label) => url ? `<img class="img" src="${esc(url)}" alt="${esc(label)}" loading="lazy" referrerpolicy="no-referrer">` : `<div class="ph">${esc(label)}</div>`;
+document.addEventListener('error', e => { const el = e.target; if (el.classList && el.classList.contains('img')) { const p = document.createElement('div'); p.className = 'ph'; p.textContent = el.alt; el.replaceWith(p); } }, true);
+function notice(msg, err) { const n = $('notice'); n.textContent = msg || ''; n.hidden = !msg; n.classList.toggle('is-error', !!err); }
+
+/* Logo: lấy ảnh base64 đã nhúng sẵn trong index.html (cùng thư mục), cache lại để lần sau hiện ngay */
+(async () => {
+  const set = u => { $('logo').src = u; $('logo').hidden = false; $('logo-fb').hidden = true; };
+  try { const c = localStorage.getItem('bit_logo'); if (c) return set(c); } catch (e) {}
+  try {
+    const t = await (await fetch('./index.html')).text();
+    const m = t.match(/head:\s*'(data:image\/png;base64,[A-Za-z0-9+\/=]+)'/);
+    if (!m) return;
+    set(m[1]); try { localStorage.setItem('bit_logo', m[1]); } catch (e) {}
+  } catch (e) {}
+})();
+
+/* Header */
+function renderUser() {
+  const s = session();
+  $('userbox').innerHTML = !s ? `<a class="btn login-btn" href="${CFG.LOGIN}?next=tintuc.html">Đăng nhập</a>` : `
+    <button type="button" class="icon-btn" aria-label="Thông báo"><i class="fa-regular fa-bell"></i></button>
+    <button type="button" class="user__name" id="logout" title="Bấm để đăng xuất"><span class="avatar" aria-hidden="true">${initial(s.name)}</span><span>${esc(s.name)}</span><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i></button>`;
+  const lo = $('logout'); if (lo) lo.onclick = () => { localStorage.removeItem(KEY); location.reload(); };
+}
+const closeMenu = () => { $('header').dataset.open = 'false'; $('burger').setAttribute('aria-expanded', 'false'); $('burger').firstElementChild.className = 'fa-solid fa-bars'; };
+$('burger').onclick = () => { const h = $('header'), o = h.dataset.open !== 'true'; h.dataset.open = o; $('burger').setAttribute('aria-expanded', o); $('burger').firstElementChild.className = o ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'; };
+$('nav').addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
+
+/* Làm sạch HTML bài viết (chỉ giữ thẻ an toàn) */
+const OK = { P:1, H2:1, H3:1, H4:1, STRONG:1, EM:1, A:1, UL:1, OL:1, LI:1, BR:1, IMG:1 };
+function clean(node) {
+  const out = document.createDocumentFragment();
+  node.childNodes.forEach(n => {
+    if (n.nodeType === 3) return out.append(n.textContent);
+    if (n.nodeType !== 1) return;
+    const t = n.tagName;
+    if (!OK[t]) return out.append(clean(n));
+    const e = document.createElement(t.toLowerCase());
+    if (t === 'IMG') {
+      const s = n.getAttribute('src') || ''; if (!/^(data:image\/|https:)/i.test(s)) return;
+      e.src = s; e.alt = ''; e.loading = 'lazy'; e.referrerPolicy = 'no-referrer';
+    } else {
+      if (t === 'A') { const h = n.getAttribute('href') || ''; if (/^(https?:|mailto:)/i.test(h)) { e.href = h; e.target = '_blank'; e.rel = 'noopener'; } }
+      e.append(clean(n));
+    }
+    out.append(e);
+  });
+  return out;
+}
+
+/* Danh sách */
+let news = [], cat = CFG.ALL, query = '', shown = CFG.PER;
+const catOf = n => n.category || 'Khác';
+const filtered = () => news.filter(n => (cat === CFG.ALL || catOf(n) === cat) && (!query || fold(n.title + ' ' + (n.summary || '')).includes(query)));
+const href = id => '#bai-' + encodeURIComponent(id);
+function renderChips() {
+  const cats = [CFG.ALL, ...new Set(news.map(catOf))];
+  $('chips').innerHTML = cats.map(c => `<button type="button" class="chip" data-c="${esc(c)}" aria-pressed="${c === cat}">${esc(c)}</button>`).join('');
+  $('foot-cats').innerHTML = cats.map(c => `<li><a href="./tintuc.html" data-c="${esc(c)}">${esc(c === CFG.ALL ? 'Tất cả bài viết' : c)}</a></li>`).join('');
+}
+function renderGrid() {
+  const list = filtered();
+  $('grid').innerHTML = list.slice(0, shown).map(n => `
+    <a class="card" href="${href(n.id)}"><div class="card__img">${imgOr(driveImg(n.thumb), n.title)}</div>
+      <div class="card__body"><div class="meta"><span class="tag">${esc(catOf(n))}</span><span>${esc(n.date || '')}</span></div>
+      <h3>${esc(n.title)}</h3>${n.summary ? `<p>${esc(n.summary)}</p>` : ''}</div></a>`).join('');
+  $('more').hidden = list.length <= shown;
+  if (!list.length && news.length) $('grid').innerHTML = '<p class="empty" style="grid-column:1/-1">Không có bài viết phù hợp.</p>';
+}
+$('chips').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; cat = b.dataset.c; shown = CFG.PER; renderChips(); renderGrid(); });
+$('foot-cats').addEventListener('click', e => { const a = e.target.closest('a[data-c]'); if (!a) return; e.preventDefault(); cat = a.dataset.c; shown = CFG.PER; renderChips(); renderGrid(); if (location.hash) location.hash = ''; else route(); scrollTo({ top: 0 }); });
+$('q').oninput = e => { query = fold(e.target.value.trim()); shown = CFG.PER; renderGrid(); };
+$('more').onclick = () => { shown += CFG.PER; renderGrid(); };
+
+/* Bài viết */
+const cache = {};
+async function showArticle(id) {
+  $('view-list').hidden = true; $('view-article').hidden = false; scrollTo({ top: 0 });
+  const item = news.find(n => String(n.id) === id) || {};
+  $('a-title').textContent = item.title || 'Đang tải...';
+  $('a-meta').innerHTML = item.title ? `<span class="tag">${esc(catOf(item))}</span><span>${esc(item.date || '')}</span>` : '';
+  const cover = driveImg(item.thumb, 1400); $('a-cover').hidden = !cover; $('a-cover').innerHTML = cover ? imgOr(cover, item.title) : '';
+  $('a-content').innerHTML = ''; notice('Đang tải bài viết...');
+  try {
+    if (!cache[id]) { const r = await apiGet({ action: 'article', id }); if (!r.ok) throw new Error(r.error || 'Không tìm thấy bài'); cache[id] = r.article; }
+    if (location.hash !== href(id)) return;   // người dùng đã chuyển trang
+    const a = cache[id]; document.title = a.title + ' | BIT';
+    $('a-title').textContent = a.title;
+    $('a-meta').innerHTML = `<span class="tag">${esc(a.category || catOf(item))}</span><span>${esc(a.date || item.date || '')}</span>`;
+    const doc = new DOMParser().parseFromString(a.html || '', 'text/html');
+    $('a-content').replaceChildren(clean(doc.body)); notice('');
+  } catch (err) { notice('Không tải được bài viết: ' + err.message, true); }
+}
+$('back').onclick = () => { if (history.length > 1 && document.referrer.includes(location.pathname)) history.back(); else location.hash = ''; };
+
+/* Điều hướng bằng hash (#bai-<id>) */
+function route() {
+  const m = location.hash.match(/^#bai-(.+)$/);
+  if (m) return showArticle(decodeURIComponent(m[1]));
+  document.title = 'Tin tức - Hoạt động | BIT'; $('view-article').hidden = true; $('view-list').hidden = false; notice('');
+}
+addEventListener('hashchange', route);
+
+addEventListener('scroll', () => $('toTop').classList.toggle('is-show', scrollY > 600), { passive: true });
+$('toTop').onclick = () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' });
+
+/* Khởi động */
+renderUser();
+notice('Đang tải tin tức...');
+apiGet({ action: 'news' }).then(r => {
+  if (!r.ok) throw new Error(r.error || 'Lỗi dữ liệu');
+  news = r.news || []; renderChips(); renderGrid();
+  if (!news.length) $('grid').innerHTML = '<p class="empty" style="grid-column:1/-1">Chưa có bài viết nào.</p>';
+  notice(''); route();
+}).catch(err => notice('Không tải được tin tức (' + err.message + '). Kiểm tra Apps Script đã thêm action "news" và triển khai bản mới chưa.', true));
+</script>
+</body>
+</html>
